@@ -2,41 +2,59 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-import Greeter from './artifacts/Greeter.json';
+import Navbar  from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Greeter from './artifacts/rps.json';
 import drizzleOptions from './drizzleOptions';
 import { DrizzleProvider } from '@drizzle/react-plugin';
-
-// Tells Drizzle what we need to run the smart contract
-//Create a drizzleOptions object and pass in the desired contract artifacts for Drizzle to instantiate.
-
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import {
+  AccountData,
+  ContractData,
+  ContractForm,
+  LoadingContainer
+} from "@drizzle/react-components";
 
 function App() {
   return (
-    <DrizzleProvider options={drizzleOptions}>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div className="container">
-      <a className="navbar-brand" href="#">Block, (Toilet-)Paper, Scissors</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarResponsive">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="#">Spiel
-              <span className="sr-only">(current)</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Anleitung</a>
-          </li>
 
-          <li className="nav-item">
-            <a className="nav-link" href="#">Kontakt</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <DrizzleProvider options={drizzleOptions}>
+
+   
+         <div className="container container-fluid">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <br />
+              <h1 className="m-5 text-light">Decentralized Schere, Stein, Papier!</h1>
+              <p className="lead">Darauf hat die Welt gewartet</p>
+              <button id="button" type="button" className="btn btn-outline-dark mb-3 p-3 btn-grad" data-toggle="modal" data-target="#staticBackdrop">
+                Neues Spiel
+              </button>
+              <div className="form-group mx-auto" style={{width: '450px'}}>
+                  <label htmlFor="formGroupExampleInput2" className="text-light">Sende den Einsatz von 1 ETH an die Auszahl-Adresse:</label>
+                  <input type="text" className="form-control" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+                </div>
+              <div id="score" className="score">
+                <p>Spieler: 0</p>
+                <p>Gegner: 0</p>
+              </div>
+              <h2 className="m-5">Rock, Paper, Scizzzzor.....</h2>
+              <ul className="list-group list-group-horizontal-md">
+                <li className="list-group-item flex-fill"><i id="block" className="choice fas fa-cube fa-10x" /></li>
+                <li className="list-group-item flex-fill"><i id="toilet-paper" className="choice fas fa-toilet-paper fa-10x" /></li>
+                <li className="list-group-item flex-fill"><i id="cut" className="choice fas fa-cut fa-10x" /></li>
+              </ul>
+              <div className="modal">
+                <div id="result" className="modal-content" />
+              </div>
+
+          </div>
+          </div>
+        </div>
+       
+     
+        
+    
     </DrizzleProvider>
   );
 }
