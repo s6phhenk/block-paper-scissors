@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {Nav, Navbar} from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -28,12 +29,12 @@ export const NavigationBar = () => (
             </Nav.Item>
             <Nav.Item>
               <Nav.Link>
-                <Link to="/about">About</Link>
+                <Link to="/Anleitung">Anleitung</Link>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link>
-                <Link to="/contact">Contact</Link>
+                <Link to="/Kontakt">Kontakt</Link>
               </Nav.Link>
             </Nav.Item>
           </Nav>
